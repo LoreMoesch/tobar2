@@ -1,0 +1,48 @@
+.btn-dark {
+  background-color: #343a40; /* Un color oscuro de ejemplo */
+  border-color: #343a40;
+  color: white;
+}
+
+.btn-dark:hover {
+  background-color:  #343a40;
+  border-color: #23272b;
+  color: white;
+}
+
+.styled-select {
+  font-size: 16px; /* Tamaño de fuente deseado para el select */
+}
+
+.styled-select optgroup {
+  font-size: 16px; /* Tamaño de fuente deseado para las opciones */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #dadada, #757575);
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 70px;
+  max-width: 600px;
+  height: 300px;
+  box-shadow: 2px 2px 2px 2px #343a40;
+  border-radius: 3px;    
+}
+
+/*estilos para la tabla*/
+table th {
+    background-color: #337ab7 !important;
+    color: white;
+}
+
+table>tbody>tr>td {
+    vertical-align: middle !important;
+}
+
+/*para alinear los botones y cuadro de busqueda*/
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+}

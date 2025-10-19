@@ -1,0 +1,218 @@
+<?php
+
+if($_SESSION["rol"] != "Administrador"){
+    if($_SESSION["rol"] != "Bedel"){
+    	echo '<script>
+    
+    	window.locations = "http://localhost/tobar2/inicio";
+    	</script>';
+    
+    	return;
+    }
+}
+
+?>
+
+
+<div class="container">
+
+	<section class="content-header">
+
+		<?php
+
+		$exp = explode("/", $_GET["url"]);
+
+		// $exp[1]  id_examen
+		$columna = "id";
+		$valor = $exp[1];
+
+		$examen = ExamenesC::VerExamenesC($columna, $valor);
+
+		$columna = "id";
+		$valor = $examen["id_materia"];
+
+		$materia = MateriasC::VerMaterias2C($columna, $valor);
+		
+		echo '<h1>Inscriptos para el Exámen de: '.$examen["nombre"].'<br><br>
+
+		Fecha: '.$examen["fecha"].' - Turno: '.$examen["hora"].' - Aula: '.$examen["aula"].' - Profesor/a: '.$examen["profesor"].'
+		</h1>
+		<br>';
+
+		echo '<a href="http://localhost/tobar2/pdfs/Inscriptos-Examen.php/'.$exp[1].'"target="blank">
+				<button class="btn btn-primary">Generar Acta PDF</button>
+			</a>';
+			
+		echo '<a href="http://localhost/tobar2/pdfs/Inscriptos-Examen1.php/'.$exp[1].'"target="blank">
+				<button class="btn btn-primary">Informe PDF</button>
+			</a>';
+
+
+		?>
+
+
+
+
+	</section>
+
+	<section class="content">
+
+		<div class="box">
+
+			<div class="box-body">
+
+				<table class="table table-bordered table-hover table-striped">
+
+					<thead>
+						<tr>
+							<th>N°</th>
+							
+							<th>Libreta</th>
+							<th>Apellido y Nombre</th>
+							<th>Dni</th>
+							<th>Concepto</th>
+							<th>Fecha</th>
+							<th>Nota</th>
+							<th>Folio</th>
+							<th>Libro</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<?php
+
+						$columna = "id_examen";
+						$valor = $exp[1];
+
+						$insc = ExamenesC::VerInscExamenC($columna, $valor);
+
+						$aaa=0;
+						
+						foreach ($insc as $key => $value) {
+						    
+                            if ($value["condicion"] == "Regular" ){        
+							
+							$aaa++;
+							
+							echo '<tr>';
+
+								echo '<td>'.$aaa.'</td>
+								
+								<td>'.$value["libreta"].'</td>
+								
+								';
+
+								$columna = "id";
+								
+								$valor = $value["id_alumno"];
+
+								$alumnos = UsuariosC::VerUsuarios2C($columna, $valor);
+                                
+                                foreach ($alumnos as $key => $v) {
+
+									echo '<td>'.$v["apellido"].' '.$v["nombre"].'</td>';
+									
+									echo '<td>'.$v["dni"].'</td>';
+	                                
+	                                $columna = "id_materia";
+	                                
+									$valor = $value["id_materia"];
+
+									//$notas = MateriasC::VerNotasC($columna, $valor);
+                                    
+                                    $BN = 0;
+                                    
+                                    if ( $v["id_carrera"] == 8){
+									    
+									      $notas = MateriasC::VerNotasiC($columna, $valor);
+
+									  } else if ( $v["id_carrera"] == 6){
+									    
+									      $notas = MateriasC::VerNotasnC($columna, $valor);
+
+									  } else if ( $v["id_carrera"] == 7){
+
+									      $notas = MateriasC::VerNotassC($columna, $valor);
+
+									  } else if ( $v["id_carrera"] == 9){
+
+									       $notas = MateriasC::VerNotascC($columna, $valor);
+
+									  }  
+                                    
+                               
+                                    foreach ($notas as $key => $Nota) {
+                                        
+                                        if ($Nota["id_alumno"] == $v["id"]){
+                                            
+	                                        if ($Nota["estado_final"] == "Aprobado" || $Nota["estado_final"] == "Reprobada" || $Nota["estado_final"] == "Ausente") {
+	                                         
+	                                            $BN=1;
+     
+     	                                     }
+	                                        
+	                                        //if ($Nota["id_alumno"] == $v["id"] && $Nota["estado"] == "Regular"){
+                                           
+                                            echo '<td>'.$Nota["estado_final"].'</td>';
+
+                                            echo '<td>'.$Nota["fecha"].'</td>';
+
+                                            echo '<td>'.$Nota["nota_final"].'</td>';
+
+                                            echo '<td>'.$Nota["folio"].'</td>';
+
+                                            echo '<td>'.$Nota["libro"].'</td>';
+
+                                            echo '<td>';
+							
+                                            echo '<a href="http://localhost/tobar2/Nota-Examen/'.$value["id_materia"].'/'.$v["libreta"].'/'.$Nota["id"].'/'.$examen["id"].'">
+		    			    
+		    			    		            <button class="btn btn-success btn-sm pull-left"><i class="fa fa-pencil"></i></button></a>';
+
+			                                          //echo '<a href="http://localhost/tobar2/Borrar-profe/'.$valor1["id"].'/'.$exp[1].'">
+			                                
+			                                          //<button class="btn btn-danger">Borrar</button>
+			                                          
+			                                          //</a>';
+
+				    			            echo '</td>';	
+
+	                                     } 
+									}	
+									
+									if ($BN==0){
+									    
+									    echo '<td>';
+									    
+									    echo '<a>&nbsp;</a>';
+		    			    		            
+		    			    		    echo '<a href="http://localhost/tobar2/borrarinsc/'.$value["id"].'/'.$exp[1].'/1">
+			                                
+			                            <button class="btn btn-danger">Borrar</button></a>';
+									    
+									    echo '</td>';
+									}
+									
+									$BN =0;
+
+							echo '</tr>';
+
+								}
+ 
+						        }                       
+					           	}
+
+						?>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+		</div>
+
+	</section>
+
+</div>

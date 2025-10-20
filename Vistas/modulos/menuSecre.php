@@ -3,8 +3,8 @@
   <!-- Contenedor de la Barra lateral principal -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Logotipo de la marca -->
-    <a href="http://localhost/tobar2/inicio" class="brand-link">
-      <img src="http://localhost/tobar2/dist/img/logo4.png"
+    <a href="<?= $baseUrl ?>inicio" class="brand-link">
+      <img src="<?= $baseUrl ?>dist/img/logo4.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">S I G E D U</span>
@@ -30,7 +30,7 @@
            ?> 
            </div>
         <div class="info">
-          <a href="http://localhost/tobar2/inicio" class="d-block">
+          <a href="<?= $baseUrl ?>inicio" class="d-block">
             <?php
               echo '<h6>'.$_SESSION["apellido"].'<p>'.$_SESSION["nombre"].'<a style="color:#c9c9c5;">'.$_SESSION["id"].'</a></p></h6>';
             ?>   
@@ -44,7 +44,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="http://localhost/tobar2/inicio" class="nav-link">
+            <a href="<?= $baseUrl ?>inicio" class="nav-link">
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Inicio
@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="http://localhost/tobar2/Comisiones2" class="nav-link">
+            <a href="<?= $baseUrl ?>Comisiones2" class="nav-link">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Comisiones
@@ -61,7 +61,7 @@
             </a>
           </li>
            <li class="nav-item">
-            <a href="http://localhost/tobar2/Certificados" class="nav-link">
+            <a href="<?= $baseUrl ?>Certificados" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Certificados
@@ -69,7 +69,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="http://localhost/tobar2/seguimiento" class="nav-link">
+            <a href="<?= $baseUrl ?>seguimiento" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Seguimiento

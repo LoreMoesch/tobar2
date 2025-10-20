@@ -1,8 +1,8 @@
   <!-- Contenedor de la Barra lateral principal -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Logotipo de la marca -->
-    <a href="http://localhost/tobar2/inicio" class="brand-link">
-      <img src="http://localhost/tobar2/dist/img/logo4.png"
+    <a href="<?= $baseUrl ?>inicio" class="brand-link">
+      <img src="<?= $baseUrl ?>dist/img/logo4.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">S I G E D U</span>
@@ -30,7 +30,7 @@
            ?> 
            </div>
         <div class="info">
-          <a href="http://localhost/tobar2/inicio" class="d-block">
+          <a href="<?= $baseUrl ?>inicio" class="d-block">
             <?php
              echo '<h6>'.$_SESSION["apellido"].'<p>'.$_SESSION["nombre"].'<a style="color:#c9c9c5;">'.$_SESSION["id"].'</a></p></h6>';
             ?>   
@@ -42,7 +42,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="http://localhost/tobar2/inicio" class="nav-link">
+            <a href="<?= $baseUrl ?>inicio" class="nav-link">
               <i class="nav-icon fa fa-home"></i>
               <p>
                 Inicio
@@ -51,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="http://localhost/tobar2/usuarios" class="nav-link">
+            <a href="<?= $baseUrl ?>usuarios" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Usuarios
@@ -68,13 +68,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://localhost/tobar2/Comisiones" class="nav-link">
+                <a href="<?= $baseUrl ?>Comisiones" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Docentes</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/tobar2/Comisiones2" class="nav-link">
+                <a href="<?= $baseUrl ?>Comisiones2" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Materias</p>
                 </a>
@@ -91,13 +91,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="http://localhost/tobar2/Examenes" class="nav-link">
+                <a href="<?= $baseUrl ?>Examenes" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inscriptos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="http://localhost/tobar2/Ver-llamado" class="nav-link">
+                <a href="<?= $baseUrl ?>Ver-llamado" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Llamados</p>
                 </a>
@@ -105,7 +105,7 @@
             </ul>
           </li>
            <li class="nav-item">
-            <a href="http://localhost/tobar2/Carreras" class="nav-link">
+            <a href="<?= $baseUrl ?>Carreras" class="nav-link">
               <i class="nav-icon fa fa-graduation-cap"></i>
               <p>
                 Carreras

@@ -36,7 +36,7 @@
            
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="http://localhost/tobar2/mis-datos">
+                <a class="dropdown-item" href="<?= $baseUrl ?>mis-datos">
                   <i class="fa fa-address-card fa-sm fa-fw mr-2 text-gray-400"></i>
                   Perfil
                 </a>
@@ -73,7 +73,7 @@
         <div class="modal-body">Seleccione "Cerrar Sesión" a continuación si esta listo para finalizar la su sesión actual.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="http://localhost/tobar2/salir">Cerrar Sesión</a>
+          <a class="btn btn-primary" href="<?= $baseUrl ?>salir">Cerrar Sesión</a>
         </div>
       </div>
     </div>
